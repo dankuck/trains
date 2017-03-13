@@ -20,9 +20,9 @@
             </div>
         </div>
         <div class="train-yard">
-            <dev-train-track v-for="track in tracks" :track="track" @track-clicked="trackClicked"></dev-train-track>
+            <train-track v-for="track in tracks" :track="track" @track-clicked="trackClicked"></train-track>
             <template v-for="train in trains">
-                <dev-train-car v-for="car in train" :track="car.track" :color="car.color" :damage="car.damage" :max-damage="maxDamage"></dev-train-car>
+                <train-car v-for="car in train" :track="car.track" :color="car.color" :damage="car.damage" :max-damage="maxDamage"></train-car>
             </template>
         </div>
     </div>
