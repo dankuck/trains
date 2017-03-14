@@ -161,7 +161,6 @@
     position: relative;
 }
 .train-controls {
-    float: right;
     border: 1px solid grey;
     margin: 1em;
     padding: 1em;
