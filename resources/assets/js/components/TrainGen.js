@@ -3,7 +3,8 @@ module.exports = {
         var x = 25;
         var y = 25;
         var d = 'R';
-        var dontChangeDirection = false;
+        var mustGoStraight = 0;
+        var minStraightAway = 4;
         var pOfChangeDirection = 0.25;
         var turns = {
             'R': ['U', 'D'],
@@ -16,11 +17,11 @@ module.exports = {
 
         function nextTrack(x, y)
         {
-            if (dontChangeDirection) {
-                dontChangeDirection = false;
+            if (mustGoStraight > 0) {
+                mustGoStraight--;
             } else if (Math.random() < pOfChangeDirection) {
                 changeDirection();
-                dontChangeDirection = true;
+                mustGoStraight = minStraightAway;
             }
             if (d === 'R') {
                 x += 1;
@@ -94,7 +95,6 @@ module.exports = {
     },
 
     generateTrain(trains, tracks, length, color, auto_fit) {
-        console.log('generating a train of length ' + length);
         var freeSections = [];
         var section = [];
         for (var i = 0; i <= tracks.length; i++) {

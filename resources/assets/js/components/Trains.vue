@@ -32,8 +32,13 @@
     import TrainGen from './TrainGen.js';
 
     export default {
+        props: ['autoRun'],
         mounted() {
-            console.log('choo choo');
+            Vue.nextTick(() => {
+                if (this.autoRun) {
+                    this.run();
+                }
+            });
         },
         data() {
             var tracks = TrainGen.generateTracks();
@@ -122,7 +127,7 @@
                 if (this.runner) {
                     return;
                 }
-                this.runner = setInterval(()=>this.step(), 100);
+                this.runner = setInterval(() => this.step(), 100);
             },
             stop() {
                 if (this.runner) {
